@@ -245,7 +245,7 @@ public class ApplicationContextTest {
         Person person = ctx.getBean(Person.class);
         System.out.println(person);
 
-        Object person1 = ctx.getBean("person");
+        Object person1 = ctx.getBean("Person");
         System.out.println(person1);
     }
 }
@@ -260,6 +260,9 @@ Person(address=Address(longitude=2222, latitude=1111), name=gaochen, age=27)
 Person(address=Address(longitude=2222, latitude=1111), name=gaochen, age=27)
 ```
 
+可以看到，我们成功将Address实例注入到了Person实例中，并且将它们存储在了我们自己的IOC容器中。其实，Spring容器的原理大致就是如此，只不过为了应对企业级开发，提供了很多便捷的功能，例如bean的作用域、bean的自定义方法等等。
+
 # 获取源码
 
-完整源码可以在我的github仓库获取👉[Simple-IOC-Container](<https://github.com/gcdd1993/Simple-IOC-Container>)
+完整源码可以在我的`github`仓库获取👉[Simple-IOC-Container](<https://github.com/gcdd1993/Simple-IOC-Container>)
+
