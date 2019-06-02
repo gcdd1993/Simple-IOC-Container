@@ -15,14 +15,6 @@ import java.util.Set;
 public class ApplicationContextTest {
 
     @Test
-    public void getBean() {
-    }
-
-    @Test
-    public void getBean1() {
-    }
-
-    @Test
     public void refresh() {
         Set<String> basePackages = new HashSet<>(1);
         basePackages.add("io.github.gcdd1993.ioc");
@@ -32,7 +24,7 @@ public class ApplicationContextTest {
         Person person = ctx.getBean(Person.class);
         System.out.println(person);
 
-        Object person1 = ctx.getBean("person");
+        Object person1 = ctx.getBean("Person");
         System.out.println(person1);
     }
 }

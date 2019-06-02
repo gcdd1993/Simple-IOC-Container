@@ -2,6 +2,7 @@ package io.github.gcdd1993.ioc.bean;
 
 import io.github.gcdd1993.ioc.annotation.Autowired;
 import io.github.gcdd1993.ioc.annotation.Bean;
+import io.github.gcdd1993.ioc.annotation.Value;
 import io.github.gcdd1993.ioc.util.PackageScanner;
 import lombok.Data;
 
@@ -51,6 +52,8 @@ public class ApplicationContext implements BeanFactory {
 
     /**
      * 全参构造器
+     *
+     * @param basePackages 扫描的包名列表
      */
     public ApplicationContext(Set<String> basePackages) {
         this.basePackages = basePackages;
@@ -130,6 +133,14 @@ public class ApplicationContext implements BeanFactory {
                 // 注入
                 field.setAccessible(true);
                 field.set(object, diObj);
+            } else {
+                Value value = field.getAnnotation(Value.class);
+                if (value != null) {
+                    // 注入
+                    field.setAccessible(true);
+                    // 需要做一些类型转换，从String转为对应的类型
+                    field.set(object, value.value());
+                }
             }
         }
 

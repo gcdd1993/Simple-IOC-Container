@@ -1,6 +1,7 @@
 package io.github.gcdd1993.ioc.util;
 
 import io.github.gcdd1993.ioc.annotation.Bean;
+import io.github.gcdd1993.ioc.annotation.Value;
 import lombok.Data;
 
 /**
@@ -12,6 +13,9 @@ import lombok.Data;
 @Data
 @Bean
 public class Address {
-    private long longitude;
-    private long latitude;
+    @Value("2222")
+    private String longitude;
+
+    @Value("1111")
+    private String latitude;
 }
